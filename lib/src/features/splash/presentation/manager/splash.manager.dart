@@ -15,6 +15,7 @@ class SplashManager extends GetxController {
     if (Store.user == null) {
       await Get.offNamed(Routes.loginPath);
     } else {
+      Store.token = await FirebaseAuth.instance.currentUser?.getIdToken();
       await Get.offNamed(Routes.homePath);
     }
   }
