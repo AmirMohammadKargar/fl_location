@@ -5,4 +5,5 @@ import 'package:fl_location/src/features/auth/data/dtos/login_body.dto.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, UserCredential>> login(LoginBodyDto body);
+  Future<Either<Failure, void>> logout();
 }

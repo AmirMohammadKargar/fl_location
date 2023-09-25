@@ -3,6 +3,7 @@ import 'package:fl_location/src/features/auth/data/dtos/login_body.dto.dart';
 
 abstract class AuthRemoteDatasource {
   Future<UserCredential> login(LoginBodyDto body);
+  Future<void> logout();
 }
 
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
@@ -14,5 +15,10 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       email: body.email,
       password: body.password,
     );
+  }
+
+  @override
+  Future<void> logout() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

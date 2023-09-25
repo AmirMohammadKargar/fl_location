@@ -3,7 +3,7 @@ import 'package:fl_location/firebase_options.dart';
 import 'package:fl_location/src/core/router/router.dart';
 import 'package:fl_location/src/core/router/routes.dart';
 import 'package:fl_location/src/core/theme/theme.dart';
-import 'package:fl_location/src/features/auth/presentation/manager/login.binding.dart';
+import 'package:fl_location/src/features/splash/presentation/manager/splash.binding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,8 +24,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: Routes.loginPath,
-      initialBinding: LoginBinding(),
+      initialRoute: Routes.splashPath,
+      initialBinding: SplashBinding(),
       getPages: AppRouter.getPages,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

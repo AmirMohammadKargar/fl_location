@@ -24,3 +24,16 @@ class LoginParams extends Equatable {
   @override
   List<Object?> get props => [body];
 }
+
+//--------------------------------------------------
+
+class LogoutUsecase extends UseCase<void, NoParams> {
+  final AuthRepository repository;
+
+  LogoutUsecase(this.repository);
+
+  @override
+  Future<Either<Failure, void>> call(NoParams params) async {
+    return await repository.logout();
+  }
+}

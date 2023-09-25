@@ -21,4 +21,11 @@ class AuthRepositoryImpl extends AuthRepository {
       return await remoteDataSource.login(body);
     }, networkInfo, convertToEntity: false);
   }
+
+  @override
+  Future<Either<Failure, void>> logout() {
+    return exceptionHandler<void>(() async {
+      return await remoteDataSource.logout();
+    }, networkInfo, convertToEntity: false);
+  }
 }

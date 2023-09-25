@@ -32,6 +32,8 @@ src
     |      |         |->domain
     |      |->home
     |      |         |->presentaion
+    |      |->splash
+    |      |         |->presentaion
     |      
     |-> shared
     |      |->widgets

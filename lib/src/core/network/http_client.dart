@@ -56,7 +56,7 @@ class AppHttpClient {
             ? const Duration(milliseconds: 60000)
             : const Duration(milliseconds: 20000);
     innerClient.options.headers['Authorization'] =
-        Store.user != null ? '${Store.user!.refreshToken}' : '';
+        Store.token != null ? '${Store.token}' : '';
   }
 
   // Generic function for handling HTTP requests with error handling
@@ -120,9 +120,9 @@ class AppHttpClient {
                       : e.response!.data
                   : e.message);
         case 502:
-          throw BadGatewayException(request: path, message: 'خطای سرور');
+          throw BadGatewayException(request: path, message: 'Server Error');
         case 504:
-          throw BadGatewayException(request: path, message: 'خطای سرور');
+          throw BadGatewayException(request: path, message: 'Server Error');
         case 503:
           throw MaintainServerException(
               request: path,

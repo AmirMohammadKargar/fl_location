@@ -1,3 +1,4 @@
+import 'package:fl_location/src/core/cache/cache_db.dart';
 import 'package:fl_location/src/core/network/network_info.dart';
 import 'package:fl_location/src/features/auth/data/datasources/auth.remote_datasource.dart';
 import 'package:fl_location/src/features/auth/data/repositories/auth.repository_impl.dart';
@@ -9,10 +10,12 @@ class LoginBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => NetworkInfoImpl());
+    Get.lazyPut(() => CacheDb());
     Get.lazyPut(() => AuthRemoteDatasourceImpl());
     Get.lazyPut(() => AuthRepositoryImpl(
         Get.find<AuthRemoteDatasourceImpl>(), Get.find<NetworkInfoImpl>()));
     Get.lazyPut(() => LoginUsecase(Get.find<AuthRepositoryImpl>()));
-    Get.lazyPut(() => LoginManager(Get.find<LoginUsecase>()));
+    Get.lazyPut(
+        () => LoginManager(Get.find<LoginUsecase>()));
   }
 }

@@ -24,6 +24,7 @@ dependencies:
   firebase_core: ^2.16.0
   geolocator: ^10.1.0
   app_settings: ^5.1.1
+  shared_preferences: 
 
 dev_dependencies:
   flutter_test:

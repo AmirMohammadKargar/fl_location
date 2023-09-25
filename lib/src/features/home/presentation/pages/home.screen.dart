@@ -10,6 +10,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<HomeManager>();
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              controller.logout();
+            },
+            icon: const Icon(Icons.logout),
+          )
+        ],
+      ),
       body: SafeArea(
         child: Center(
           child: GetBuilder<HomeManager>(

@@ -51,13 +51,13 @@ class LoginManager extends GetxController {
     res.fold(
         (failure) => ErrorHandler.showErrorSnackBar(
             Get.context!, ErrorHandler.getErrorMessage(failure)), (response) {
-      _saveToken(response);
-
+      _saveTokenAndUser(response);
       Get.offAllNamed(Routes.homePath);
     });
   }
 
-  void _saveToken(UserCredential userCredential) {
+  void _saveTokenAndUser(UserCredential userCredential) async {
+    Store.token = await FirebaseAuth.instance.currentUser?.getIdToken();
     Store.user = userCredential.user;
   }
 

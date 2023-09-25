@@ -2,6 +2,10 @@ import 'dart:async';
 
 import 'package:app_settings/app_settings.dart';
 import 'package:fl_location/src/core/errors/error_handler.dart';
+import 'package:fl_location/src/core/router/routes.dart';
+import 'package:fl_location/src/core/store/store.dart';
+import 'package:fl_location/src/core/usecase/base_usecase.dart';
+import 'package:fl_location/src/features/auth/domain/usecases/auth.usecases.dart';
 import 'package:fl_location/src/features/location/data/dtos/send_location_body.dto.dart';
 import 'package:fl_location/src/features/location/domain/usecases/location.repository.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +15,8 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class HomeManager extends GetxController {
   final SendLocationUsecase _sendLocationUsecase;
-  HomeManager(this._sendLocationUsecase);
+  final LogoutUsecase _logoutUsecase;
+  HomeManager(this._sendLocationUsecase, this._logoutUsecase);
 
   Timer? backgrounTimer;
   bool _serviceEnabled = false;
@@ -111,5 +116,15 @@ class HomeManager extends GetxController {
           await AppSettings.openAppSettings(type: AppSettingsType.location);
           await _getLocationPermission();
         });
+  }
+
+  Future<void> logout() async {
+    var res = await _logoutUsecase.call(NoParams());
+    res.fold(
+        (failure) => ErrorHandler.showErrorSnackBar(
+            Get.context!, ErrorHandler.getErrorMessage(failure)), (r) {
+      Store.logout();
+      Get.offAndToNamed(Routes.loginPath);
+    });
   }
 }
