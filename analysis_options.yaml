@@ -1,0 +1,87 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+    exclude: [build/**, lib/**.freezed.dart, lib/**.g.dart,lib/**.config.dart,lib/src/third_party/]
+
+    errors:
+    # treat missing required parameters as a warning (not a hint)
+      missing_required_param: warning
+      # treat missing returns as a warning (not a hint)
+      missing_return: warning
+      # allow having TODO comments in the code
+      todo: ignore
+      # allow self-reference to deprecated members (we do this because otherwise we have
+      # to annotate every member in every test, assert, etc, when we deprecate something)
+      deprecated_member_use_from_same_package: ignore
+      # Clean up existing unnecessary imports, and remove line to ignore.
+      unnecessary_import: ignore
+      # Turned off until null-safe rollout is complete.
+      unnecessary_null_comparison: ignore
+
+  
+linter:
+  rules:
+    - camel_case_types
+    - library_names
+    - avoid_catching_errors
+    - avoid_empty_else
+    - unnecessary_brace_in_string_interps
+    - leading_newlines_in_multiline_strings
+    - curly_braces_in_flow_control_structures
+    - slash_for_doc_comments
+    - always_declare_return_types
+    - avoid_relative_lib_imports
+    - avoid_shadowing_type_parameters
+    - avoid_slow_async_io
+    - avoid_types_as_parameter_names
+    - await_only_futures
+    - camel_case_extensions
+    - cancel_subscriptions
+    - directives_ordering
+    - empty_catches
+    - hash_and_equals
+    - iterable_contains_unrelated_type
+    - list_remove_unrelated_type
+    - no_adjacent_strings_in_list
+    - no_duplicate_case_values
+    - non_constant_identifier_names
+    - omit_local_variable_types
+    - package_api_docs
+    - package_prefixed_library_names
+    - prefer_generic_function_type_aliases
+    - prefer_is_not_empty
+    - prefer_iterable_whereType
+    - prefer_single_quotes
+    - prefer_typing_uninitialized_variables
+    - sort_child_properties_last
+    - test_types_in_equals
+    - throw_in_finally
+    - unawaited_futures
+    - unnecessary_null_aware_assignments
+    - unnecessary_statements
+    - unrelated_type_equality_checks
+    - unsafe_html
+    - use_full_hex_values_for_flutter_colors
+    - valid_regexps
+  
+ 
+  
+    
+dart_code_metrics:
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  metrics:
+    cyclomatic-complexity: 20
+    maximum-nesting-level: 5
+    number-of-parameters: 4
+    source-lines-of-code: 50
+  metrics-exclude:
+    - test/**
+  rules:
+    - newline-before-return
+    - no-boolean-literal-compare
+    - no-empty-block
+    - prefer-trailing-comma
+    - prefer-conditional-expressions
+    - no-equal-then-else

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "93823949501",
+    "project_id": "flutter-test-fedc0",
+    "storage_bucket": "flutter-test-fedc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93823949501:android:90180decf49cf15c84b5d4",
+        "android_client_info": {
+          "package_name": "de.benitecug.test.flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUZeqhcSL5LXRxrYJ9N6udjJ1pym2H4dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
