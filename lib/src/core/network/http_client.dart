@@ -63,8 +63,6 @@ class AppHttpClient {
   Future<dynamic> tryCatch(
     RequestFunc func,
     String path, {
-    bool cachedResponse = false,
-    bool isPaginated = false,
     bool isUploading = false,
     Map<String, dynamic>? queryParams,
   }) async {
@@ -153,14 +151,13 @@ class AppHttpClient {
     Map<String, dynamic>? queryParams,
   }) async {
     return await tryCatch(
-        () => innerClient.get(
-              Urls.baseUrl + path,
-              cancelToken: cancelToken,
-              queryParameters: queryParams,
-            ),
-        path,
-        cachedResponse: cachedResponse,
-        isPaginated: isPaginated);
+      () => innerClient.get(
+        Urls.baseUrl + path,
+        cancelToken: cancelToken,
+        queryParameters: queryParams,
+      ),
+      path,
+    );
   }
 
   // Generic function for making POST requests
@@ -179,16 +176,15 @@ class AppHttpClient {
       });
     }
     return await tryCatch(
-        () => innerClient.post(
-              Urls.baseUrl + path,
-              cancelToken: cancelToken,
-              queryParameters: queryParams,
-              data: formData ?? requestBody ?? data,
-            ),
-        path,
-        isUploading: formData != null,
-        cachedResponse: cachedResponse,
-        isPaginated: isPaginated);
+      () => innerClient.post(
+        Urls.baseUrl + path,
+        cancelToken: cancelToken,
+        queryParameters: queryParams,
+        data: formData ?? requestBody ?? data,
+      ),
+      path,
+      isUploading: formData != null,
+    );
   }
 
   // Generic function for making PUT requests
@@ -200,15 +196,14 @@ class AppHttpClient {
     Map<String, dynamic>? data,
   }) async {
     return await tryCatch(
-        () => innerClient.put(
-              Urls.baseUrl + path,
-              cancelToken: cancelToken,
-              queryParameters: queryParams,
-              data: data,
-            ),
-        path,
-        cachedResponse: cachedResponse,
-        isPaginated: isPaginated);
+      () => innerClient.put(
+        Urls.baseUrl + path,
+        cancelToken: cancelToken,
+        queryParameters: queryParams,
+        data: data,
+      ),
+      path,
+    );
   }
 
   // Generic function for making PATCH requests
@@ -221,15 +216,14 @@ class AppHttpClient {
     FormData? formData,
   }) async {
     return await tryCatch(
-        () => innerClient.patch(
-              Urls.baseUrl + path,
-              cancelToken: cancelToken,
-              queryParameters: queryParams,
-              data: formData ?? data,
-            ),
-        path,
-        cachedResponse: cachedResponse,
-        isPaginated: isPaginated);
+      () => innerClient.patch(
+        Urls.baseUrl + path,
+        cancelToken: cancelToken,
+        queryParameters: queryParams,
+        data: formData ?? data,
+      ),
+      path,
+    );
   }
 
   // Generic function for making DELETE requests
@@ -240,14 +234,13 @@ class AppHttpClient {
     Map<String, dynamic>? queryParams,
   }) async {
     return await tryCatch(
-        () => innerClient.delete(
-              Urls.baseUrl + path,
-              cancelToken: cancelToken,
-              queryParameters: queryParams,
-            ),
-        path,
-        cachedResponse: cachedResponse,
-        isPaginated: isPaginated);
+      () => innerClient.delete(
+        Urls.baseUrl + path,
+        cancelToken: cancelToken,
+        queryParameters: queryParams,
+      ),
+      path,
+    );
   }
 }
 
